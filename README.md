@@ -1,7 +1,8 @@
 # To do list.
 Made by Błażej Gródecki. 
 
-My to do list website
+My to do list website | Demo:
+https://blazej-grodecki.github.io/todos-list-react/
 
 ## How it works:
 ![gif](public/preview.gif)
