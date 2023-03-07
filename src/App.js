@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 import Form from "./Form";
 import Tasks from "./Tasks";
 import Buttons from "./Buttons";
@@ -14,28 +14,32 @@ function App() {
   ]);
 
   const toggleHideDone = () => {
-    setHideDone(hideDone => !hideDone);
+    setHideDone((hideDone) => !hideDone);
   };
 
   const removeTasks = (id) => {
-    setTasks(tasks => tasks.filter(task => task.id !== id))
+    setTasks((tasks) => tasks.filter((task) => task.id !== id));
   };
 
   const toggleTaskDone = (id) => {
-    setTasks(tasks => tasks.map(task => {
-      if(task.id === id) {
-        return {...task, done: !task.done};
-      }
+    setTasks((tasks) =>
+      tasks.map((task) => {
+        if (task.id === id) {
+          return { ...task, done: !task.done };
+        }
 
-      return task;
-    }));
+        return task;
+      })
+    );
   };
 
   const setAllDone = () => {
-    setTasks(tasks => tasks.map(task => ({
-      ...task, 
-      done: true,
-    })));
+    setTasks((tasks) =>
+      tasks.map((task) => ({
+        ...task,
+        done: true,
+      }))
+    );
   };
 
   const addNewTask = (content) => {
@@ -48,13 +52,13 @@ function App() {
           id: tasks.length ? tasks[tasks.length - 1].id + 1 : 1,
         },
       ]);
-    };
+    }
   };
 
   return (
     <Container>
       <Header title="Lista zadań" />
-      <Section 
+      <Section
         title="Dodaj nowe zadanie"
         body={<Form addNewTask={addNewTask} />}
       />
@@ -62,7 +66,7 @@ function App() {
       <Section
         title="Lista zadań"
         body={
-          <Tasks 
+          <Tasks
             tasks={tasks}
             hideDone={hideDone}
             removeTasks={removeTasks}
@@ -70,9 +74,9 @@ function App() {
           />
         }
         extraHeaderContent={
-          <Buttons 
+          <Buttons
             tasks={tasks}
-            hideDone={hideDone} 
+            hideDone={hideDone}
             toggleHideDone={toggleHideDone}
             setAllDone={setAllDone}
           />
